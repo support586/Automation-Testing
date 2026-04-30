@@ -10,16 +10,19 @@ export class LoginPage {
     this.dashboardView = page.locator('ui-view');
   }
 
+  // Navigate to the login page
   async goto() {
     await this.page.goto('https://qado.medisource.com/login');
   }
 
+  // Perform login with provided credentials
   async login(username, password) {
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
   }
 
+  // Assert that login was successful by checking for dashboard view
   async assertLoginSuccess() {
     await expect(this.dashboardView).toContainText('Administrator Dashboard');
   }

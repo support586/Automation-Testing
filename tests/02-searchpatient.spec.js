@@ -1,11 +1,11 @@
 const { test } = require('@playwright/test');
 const { SearchPatientPage } = require('../pages/SearchPatientPage');
 
-test('test', async ({ page }) => {
+test('Search Patient', async ({ page }) => {
   const searchPatientPage = new SearchPatientPage(page);
 
   await searchPatientPage.goto();
-  await searchPatientPage.login('ojt3@geeksnest', 'Ucu!evangel2026');
+  await searchPatientPage.login('ojt3@geeksnest', '!Ucu!evangel2026');
   await searchPatientPage.openPatientsPage();
   await searchPatientPage.searchPatient('evangel');
   await searchPatientPage.selectPatient();

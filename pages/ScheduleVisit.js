@@ -1,8 +1,13 @@
 export class ScheduleVisitPage {
   constructor(page) {
     this.page = page;
+
+    this.usernameInput = page.getByRole('textbox', { name: 'Username' });
+    this.passwordInput = page.getByRole('textbox', { name: 'Password' });
+    this.loginButton = page.getByRole('button', { name: 'Login' });
   }
 
+  // Perform login with provided credentials
   async login(username, password) {
     await this.page.goto('https://qado.medisource.com/login');
 
@@ -11,19 +16,21 @@ export class ScheduleVisitPage {
     await this.page.getByRole('button', { name: 'Login' }).click();
   }
 
+  // Navigate to the Patients page
   async openPatientsPage() {
-    await this.page.locator('div:nth-child(3) > .collapsed__nav_icon').click();
+    await this.page.getByRole('link', { name: '  Patient Manager ' }).click();
     await this.page.getByRole('link', { name: 'Patients' }).click();
-    await this.page.getByRole('heading', { name: /Patient Manager/i }).waitFor();
   }
 
+  // Search for a patient and open their details
   async searchAndOpenPatient(patientName, patientOptionText) {
     await this.page.getByRole('textbox', { name: 'Search Patients' }).fill(patientName);
     await this.page.getByText(patientOptionText).click();
     await this.page.getByRole('button', { name: ' ' }).click();
   }
 
-  async scheduleVisit({date,discipline = 'Chronic Condition Management',clinician = 'Bucasas, Daryl',visitType = 'LVN G0300',}) 
+  // Schedule a visit with specified details
+  async scheduleVisit({date,discipline = 'RN - Education Visit',clinician = 'A3, OJT',visitType = 'RN Regular Visit G0299',}) 
   {
     await this.page.waitForTimeout(5000);
 

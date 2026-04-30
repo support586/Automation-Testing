@@ -7,20 +7,20 @@ test("login and add patient", async ({ page }) => {
   const addPatient = new AddPatient(page);
 
   const patientData = {
-    referralDate: "05/10/2026",
+    referralDate: "04/23/2026",
     referralTime: "12:30",
-    plannedSocDate: "05/10/2026",
+    plannedSocDate: "05/01/2026",
     mrn: "22222",
 
     primaryInsurance: "AIG Medicare",
-    primaryPolicy: "1234567890",
+    primaryPolicy: "1JR5EN1GE77",
     primaryAuthorization: "1234567890",
     primaryEcp: "- Medicare - All states",
     primaryCopay: "100",
     primaryCopayPaid: "100",
 
     secondaryInsurance: "Allianzz",
-    secondaryPolicy: "1234567890",
+    secondaryPolicy: "1JR5EN1GE77",
     secondaryAuthorization: "1234567890",
     secondaryEcp: "- Medicare - All states",
     secondaryCopay: "100",
@@ -70,12 +70,12 @@ test("login and add patient", async ({ page }) => {
     dischargeDate: "05/11/2026",
     diagnosisSurgery: "vanzvanz",
 
-    csRn: "Admin, Super RN",
+    csRn: "A3, OJT RN",
     caseManager: "Admin, Dick RN",
   };
 
   await addPatient.gotoLogin();
-  await addPatient.login("ojt3@geeksnest", "Ucu!evangel2026");
+  await addPatient.login("ojt3@geeksnest", "!Ucu!evangel2026");
   await addPatient.openAddPatientPage();
   await addPatient.fillPatientForm(patientData);
   await addPatient.save();
