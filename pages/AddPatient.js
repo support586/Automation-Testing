@@ -26,7 +26,7 @@ class AddPatient {
   // Open Add Patient Page
   async openAddPatientPage() {
     // Navigate to Patient Manager and click Add Patient
-    await this.page.getByRole('link', { name: '  Patient Manager ' }).click();
+    await this.page.getByRole('link', { name: /Patient Manager/i }).click();
     // Click on Patients menu
     await this.page.getByRole('link', { name: 'Add Patient' }).click();
     // Click Skip Button on the pop-up
